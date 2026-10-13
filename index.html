@@ -1,0 +1,688 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#F4F2F0">
+<link rel="canonical" href="https://dough.sandscap.com.do/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://dough.sandscap.com.do/">
+<meta property="og:title" content="DOUGH! Pizzería">
+<meta property="og:description" content="Un pedazo más. Escoge tu pizza, personalízala y ordena.">
+<meta property="og:image" content="https://dough.sandscap.com.do/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="preload" as="image" href="seq/000.webp">
+<title>DOUGH! Pizzería</title>
+<meta name="description" content="DOUGH! — Un pedazo más. Pizza con personalidad: escoge, personaliza y ordena.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,900&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap">
+<style>
+/* Layout: editorial split hero (oversized type left, line-art character right) pinned while scroll plays one story; then menu, our dough, red closing band. Single warm-paper look by design. */
+:root{
+  --paper:#F4F2F0; --paper-2:#EBE7E2; --ink:#242424; --ink-2:#4A4643; --muted:#5E5955;
+  --tomato:#E33D2E; --tomato-ink:#B8261A; --cheese:#F3C45B; --line:#D8D2CB;
+  --display:'Fraunces',Georgia,'Times New Roman',serif;
+  --body:'DM Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:auto}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.5;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{text-wrap:balance;margin:0}
+button{font-family:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--tomato);outline-offset:3px;border-radius:4px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.wrap{max-width:1280px;margin:0 auto;padding-inline:clamp(16px,4vw,48px)}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 28px;border-radius:999px;border:2.5px solid var(--ink);font-weight:700;font-size:17px;text-decoration:none;cursor:pointer;transition:transform .15s ease,background .15s ease,color .15s ease}
+.btn:active{transform:translateY(1px)}
+.btn-red{background:var(--tomato);color:#fff;box-shadow:4px 4px 0 var(--ink)}
+.btn-red:hover{background:var(--tomato-ink)}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-ink:hover{background:#000}
+.btn-ghost{background:transparent}
+.btn-ghost:hover{background:var(--ink);color:var(--paper)}
+.link{font-weight:700;text-decoration:underline;text-decoration-thickness:2.5px;text-underline-offset:5px;padding:12px 4px;min-height:44px;display:inline-flex;align-items:center}
+.link:hover{color:var(--tomato)}
+
+/* header */
+.head{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:var(--paper);border-bottom:2px solid transparent;transition:border-color .2s}
+.head.scrolled{border-color:var(--ink)}
+.head .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:72px}
+.wordmark{font-family:var(--display);font-weight:900;font-size:30px;letter-spacing:-.02em;text-decoration:none;line-height:1}
+.wordmark span{color:var(--tomato)}
+.nav{display:flex;align-items:center;gap:8px}
+.nav a{text-decoration:none;font-weight:500;padding:10px 14px;border-radius:999px;min-height:44px;display:inline-flex;align-items:center}
+.nav a:hover{background:var(--paper-2)}
+.cart-btn{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 18px;border-radius:999px;border:2.5px solid var(--ink);background:var(--ink);color:var(--paper);font-weight:700;cursor:pointer}
+.cart-btn:hover{background:#000}
+.cart-count{min-width:26px;height:26px;border-radius:13px;background:var(--tomato);color:#fff;font-size:14px;display:inline-grid;place-items:center;padding:0 7px;font-variant-numeric:tabular-nums}
+
+/* hero */
+.hero{position:relative;overflow:hidden}
+.hero-inner{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);align-items:center;gap:24px;min-height:calc(100vh - 72px);min-height:calc(100svh - 72px);padding-block:24px 56px}
+.copy{display:flex;flex-direction:column;gap:22px;position:relative;z-index:2}
+.h1{font-family:var(--display);font-weight:900;font-size:clamp(64px,9.2vw,148px);line-height:.86;letter-spacing:-.035em}
+.h1 .red{color:var(--tomato)}
+.sub{font-size:clamp(19px,1.7vw,24px);color:var(--ink-2);margin:0;max-width:22ch}
+.ctas{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px}
+.stage{position:relative;transform-origin:50% 40%;will-change:transform}
+.stage{aspect-ratio:1/1;width:100%;max-width:min(100%,calc(100vh - 140px));max-width:min(100%,calc(100svh - 140px));margin:0 auto}
+.stage img,.stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block;-webkit-mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent),linear-gradient(transparent,#000 4%);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent),linear-gradient(transparent,#000 4%);mask-composite:intersect}
+.stage canvas{visibility:hidden}
+.stage.live canvas{visibility:visible}
+.stage.live img{visibility:hidden}
+.cue{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);display:flex;align-items:center;gap:10px;font-weight:500;font-size:15px;color:var(--muted);z-index:3}
+.cue i{display:block;width:2px;height:26px;background:var(--ink);transform-origin:top;animation:cue 1.6s ease-in-out infinite}
+@keyframes cue{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* character idle (nested inner groups only) */
+.idle-breathe{transform-box:fill-box;transform-origin:50% 100%;animation:breathe 4.2s ease-in-out infinite}
+.idle-blink{transform-box:fill-box;transform-origin:50% 50%;animation:blink 5.4s infinite}
+@keyframes breathe{0%,100%{transform:scaleY(1)}50%{transform:scaleY(1.012)}}
+@keyframes blink{0%,93%,100%{transform:scaleY(1)}95.5%{transform:scaleY(.08)}}
+.static-hero .cue{display:none}
+.paused .idle-breathe,.paused .idle-blink,.paused .cue i{animation-play-state:paused}
+
+/* sections */
+.sec{padding-block:clamp(72px,10vw,140px)}
+.h2{font-family:var(--display);font-weight:900;font-size:clamp(44px,6.4vw,96px);line-height:.92;letter-spacing:-.03em}
+.menu-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:40px}
+.filters{display:flex;flex-wrap:wrap;gap:8px}
+.filter{min-height:44px;padding:0 20px;border-radius:999px;border:2px solid var(--ink);background:transparent;font-weight:700;font-size:15px;cursor:pointer}
+.filter[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.filter:hover:not([aria-pressed="true"]){background:var(--paper-2)}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:56px 40px}
+.pz{display:flex;flex-direction:column;gap:10px;min-width:0}
+.pz-img{aspect-ratio:1/1;max-width:100%;position:relative;margin-bottom:6px}
+.pz-img img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 18px 22px rgba(36,36,36,.18));transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.pz:hover .pz-img img{transform:rotate(8deg) scale(1.02)}
+.pz-tag{position:absolute;top:0;left:0;z-index:1;background:var(--paper);padding:3px 0;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--tomato-ink)}
+.pz h3{font-family:var(--display);font-weight:900;font-size:30px;line-height:1;letter-spacing:-.02em}
+.pz p{margin:0;color:var(--muted)}
+.pz-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:12px;border-top:2px solid var(--ink);margin-top:auto}
+.price{font-family:var(--display);font-weight:700;font-size:24px;font-variant-numeric:tabular-nums}
+.pz-actions{display:flex;gap:8px}
+.mini{min-height:44px;padding:0 16px;border-radius:999px;border:2px solid var(--ink);background:transparent;font-weight:700;font-size:15px;cursor:pointer}
+.mini:hover{background:var(--paper-2)}
+.mini.red{background:var(--tomato);border-color:var(--tomato);color:#fff}
+.mini.red:hover{background:var(--tomato-ink);border-color:var(--tomato-ink)}
+.empty-filter{grid-column:1/-1;color:var(--muted)}
+
+/* our dough */
+.dough{background:var(--ink);color:var(--paper)}
+.dough-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:48px;align-items:center}
+.dough .h2{color:var(--paper)}
+.dough .h2 em{font-style:normal;color:var(--cheese)}
+.dough-copy{display:flex;flex-direction:column;gap:22px;max-width:56ch}
+.dough-copy p{margin:0;font-size:20px;line-height:1.6;color:#D9D4CE}
+.dough-art{background:var(--paper);border-radius:50%;aspect-ratio:1/1;max-width:440px;width:100%;justify-self:center;display:block;overflow:hidden;border:3px solid var(--paper)}
+.dough-art img{width:100%;height:auto;transform:scale(1.08) translateY(4%)}
+
+/* final */
+.final{background:var(--tomato);color:#fff;text-align:left}
+.final .h2{color:#fff;max-width:14ch}
+.final-row{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:32px}
+.final .btn{background:var(--paper);color:var(--ink);border-color:var(--ink);box-shadow:4px 4px 0 var(--ink)}
+.final .btn:hover{background:#fff}
+.foot{background:var(--paper);padding-block:36px}
+.foot .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px}
+.foot nav{display:flex;flex-wrap:wrap;gap:4px}
+.foot nav a{text-decoration:none;font-weight:500;padding:10px 12px;min-height:44px;display:inline-flex;align-items:center}
+.foot nav a:hover{color:var(--tomato)}
+.foot small{color:var(--muted);font-size:14px}
+
+/* overlays */
+.scrim{position:fixed;inset:0;background:rgba(36,36,36,.5);z-index:80}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(460px,100%);background:var(--paper);z-index:90;display:flex;flex-direction:column;border-left:3px solid var(--ink);animation:slide .3s cubic-bezier(.2,.7,.2,1)}
+@keyframes slide{from{transform:translateX(100%)}to{transform:none}}
+.dh{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;padding-top:calc(18px + env(safe-area-inset-top,0px));border-bottom:2px solid var(--ink)}
+.dh h2{font-family:var(--display);font-weight:900;font-size:30px;letter-spacing:-.02em}
+.x{width:48px;height:48px;border-radius:50%;border:2px solid var(--ink);background:transparent;display:grid;place-items:center;cursor:pointer}
+.x:hover{background:var(--paper-2)}
+.db{flex:1;overflow-y:auto;padding:8px 20px 20px}
+.df{border-top:2px solid var(--ink);padding:18px 20px calc(20px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:10px}
+.row{display:flex;justify-content:space-between;gap:12px;font-variant-numeric:tabular-nums}
+.row.total{font-family:var(--display);font-weight:900;font-size:24px}
+.line{display:grid;grid-template-columns:72px minmax(0,1fr);gap:14px;padding:16px 0;border-bottom:1.5px solid var(--line)}
+.line img{width:72px;height:72px;object-fit:contain}
+.line h3{font-family:var(--display);font-weight:900;font-size:20px;line-height:1.1}
+.line .meta{font-size:14px;color:var(--muted);margin:2px 0 8px}
+.line-ctl{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.qty{display:inline-flex;align-items:center;border:2px solid var(--ink);border-radius:999px;height:44px}
+.qty button{width:44px;height:40px;border:0;background:transparent;font-size:20px;font-weight:700;cursor:pointer;border-radius:999px}
+.qty button:hover{background:var(--paper-2)}
+.qty output{min-width:28px;text-align:center;font-weight:700;font-variant-numeric:tabular-nums}
+.rm{border:0;background:transparent;text-decoration:underline;text-underline-offset:3px;color:var(--muted);cursor:pointer;min-height:44px;padding:0 6px;font-size:14px}
+.rm:hover{color:var(--tomato-ink)}
+.empty{text-align:center;padding:40px 8px;display:flex;flex-direction:column;align-items:center;gap:14px}
+.empty p{margin:0;font-family:var(--display);font-weight:700;font-size:22px}
+.empty small{color:var(--muted);font-size:15px}
+
+.modal{position:fixed;inset:0;z-index:95;display:grid;place-items:center;padding:16px;pointer-events:none}
+.card{pointer-events:auto;background:var(--paper);border:3px solid var(--ink);border-radius:24px;box-shadow:8px 8px 0 var(--ink);width:min(720px,100%);max-height:calc(100vh - 32px);max-height:calc(100svh - 32px);overflow:auto;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);animation:pop .25s cubic-bezier(.2,.7,.2,1)}
+@keyframes pop{from{transform:translateY(16px)}to{transform:none}}
+.card-img{background:var(--paper-2);display:grid;place-items:center;padding:24px;border-right:3px solid var(--ink)}
+.card-body{padding:24px;display:flex;flex-direction:column;gap:18px;position:relative}
+.card-body .x{position:absolute;top:14px;right:14px}
+.card-body h2{font-family:var(--display);font-weight:900;font-size:34px;line-height:1;padding-right:56px;letter-spacing:-.02em}
+.card-body p{margin:0;color:var(--muted)}
+fieldset{border:0;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+legend{font-weight:700;margin-bottom:8px;padding:0}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opt{position:relative}
+.opt input{position:absolute;opacity:0;width:1px;height:1px}
+.opt span{display:inline-flex;flex-direction:column;align-items:flex-start;justify-content:center;min-height:52px;padding:6px 16px;border:2px solid var(--ink);border-radius:14px;cursor:pointer;font-weight:700;font-size:15px;line-height:1.2}
+.opt span small{font-weight:500;color:var(--muted);font-size:13px}
+.opt input:checked+span{background:var(--ink);color:var(--paper)}
+.opt input:checked+span small{color:#CFC9C2}
+.opt input:focus-visible+span{outline:3px solid var(--tomato);outline-offset:2px}
+.card-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-top:14px;border-top:2px solid var(--ink)}
+
+.co-fields{display:flex;flex-direction:column;gap:14px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-weight:700;font-size:15px}
+.field input,.field textarea{min-height:50px;border:2px solid var(--ink);border-radius:12px;background:#fff;padding:10px 14px;font:inherit;font-size:16px;color:var(--ink);width:100%}
+.field textarea{min-height:80px;resize:vertical}
+.field .err{color:var(--tomato-ink);font-size:14px;font-weight:500}
+.field.bad input,.field.bad textarea{border-color:var(--tomato-ink)}
+.note{font-size:14px;color:var(--muted);background:var(--paper-2);border-radius:12px;padding:12px 14px}
+.done{display:flex;flex-direction:column;gap:14px;padding:12px 0}
+.done h3{font-family:var(--display);font-weight:900;font-size:30px;line-height:1.05}
+
+.bar{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:60;display:none;align-items:center;justify-content:space-between;gap:12px;background:var(--ink);color:var(--paper);border-radius:999px;padding:8px 8px 8px 20px;box-shadow:0 10px 30px rgba(36,36,36,.3)}
+.bar b{font-variant-numeric:tabular-nums}
+.bar .btn{min-height:44px;padding:0 20px;font-size:15px;box-shadow:none;border-color:var(--tomato)}
+body.has-bar .bar{display:flex}
+body.has-bar{padding-bottom:84px}
+
+/* responsive */
+@media (max-width:1100px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:901px){.bar{display:none!important}body.has-bar{padding-bottom:0}}
+@media (max-width:900px){
+  .nav a.hide-sm{display:none}
+  .hero-inner{grid-template-columns:minmax(0,1fr);min-height:0;padding-block:28px 64px;gap:8px}
+  .copy{gap:16px}
+  .h1{font-size:clamp(58px,15vw,96px)}
+  .stage{max-width:min(100%,520px)}
+  .cue{display:none}
+  .dough-grid{grid-template-columns:minmax(0,1fr)}
+  .dough-art{max-width:320px}
+  .card{grid-template-columns:minmax(0,1fr)}
+  .card-img{border-right:0;border-bottom:3px solid var(--ink);padding:16px}
+  .card-img img{max-width:200px}
+}
+@media (max-width:620px){
+  .grid{grid-template-columns:minmax(0,1fr);gap:48px}
+  .pz-img{max-width:340px;margin-inline:auto;width:100%}
+  .drawer{width:100%;border-left:0}
+  .head .wrap{min-height:64px}
+  .wordmark{font-size:26px}
+  .cart-btn{padding:0 14px}
+  .cart-label{display:none}
+  .modal{padding:0;place-items:end stretch}
+  .card{border-radius:24px 24px 0 0;box-shadow:none;max-height:92svh;border-width:3px 0 0}
+}
+@media (prefers-reduced-motion:reduce){
+  .idle-breathe,.idle-blink,.cue i,.drawer,.card{animation:none!important}
+  .pz-img img{transition:none}
+}
+</style>
+
+</head>
+<body>
+<header class="head" id="top">
+  <div class="wrap">
+    <a href="#inicio" class="wordmark" aria-label="DOUGH!, inicio">DOUGH<span>!</span></a>
+    <nav class="nav" aria-label="Principal">
+      <a href="#menu" class="hide-sm">Menú</a>
+      <a href="#masa" class="hide-sm">Nuestra masa</a>
+      <button type="button" class="cart-btn" id="cartBtn" aria-haspopup="dialog" aria-controls="cart">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h2l2.3 10.4a1.6 1.6 0 0 0 1.6 1.2h8.4a1.6 1.6 0 0 0 1.6-1.2L21 8H6.2"/><circle cx="9.5" cy="20" r="1.4"/><circle cx="17.5" cy="20" r="1.4"/></svg>
+        <span class="cart-label">Carrito</span>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="inicio" aria-labelledby="h1">
+  <div class="wrap hero-inner">
+    <div class="copy">
+      <h1 class="h1" id="h1">UN PEDAZO<br><span class="red">MÁS.</span></h1>
+      <p class="sub">Eso dijiste hace tres pedazos.</p>
+      <div class="ctas">
+        <a class="btn btn-red" href="#menu" id="feedMe">Dame pizza</a>
+        <a class="link" href="#masa">Conoce la masa</a>
+      </div>
+    </div>
+    <div class="stage" id="stage">
+      <img id="sceneStill" src="seq/000.webp" width="760" height="760" alt="" aria-hidden="true">
+      <canvas id="scene" width="760" height="760" role="img" aria-label="Un muchacho de gorra al revés y lentes le da un mordisco a su pedazo de pizza y se queda masticando, feliz"></canvas>
+    </div>
+  </div>
+  <div class="cue" id="cue" aria-hidden="true">Baja pa' un mordisco <i></i></div>
+</section>
+
+<section class="sec" id="menu" aria-labelledby="menuH">
+  <div class="wrap">
+    <div class="menu-head">
+      <h2 class="h2" id="menuH">Escoge tu próxima obsesión.</h2>
+      <div class="filters" role="group" aria-label="Filtrar el menú" id="filters"></div>
+    </div>
+    <div class="grid" id="grid" aria-live="polite"></div>
+  </div>
+</section>
+
+<section class="sec dough" id="masa" aria-labelledby="masaH">
+  <div class="wrap dough-grid">
+    <div class="dough-copy">
+      <h2 class="h2" id="masaH">Lo bueno <em>se amasa.</em></h2>
+      <p>Aquí la pizza no es un trámite. Es lo que hacemos porque nos encanta: estirar la masa con las manos, ponerle salsa de más y esperar frente al horno como quien espera una buena noticia.</p>
+      <p>Cada pedazo sale hecho pa' que digas "uno más" con toda la confianza del mundo. Nosotros no te vamos a juzgar.</p>
+      <div><a class="btn btn-red" href="#menu">Ver el menú</a></div>
+    </div>
+    <div class="dough-art" aria-hidden="true">
+      <img src="seq/066.webp" width="760" height="760" alt="" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section class="sec final" aria-labelledby="finalH">
+  <div class="wrap final-row">
+    <h2 class="h2" id="finalH">Tu horno se puede tomar la noche libre.</h2>
+    <a class="btn" href="#menu">Busca mi pizza</a>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <a href="#inicio" class="wordmark">DOUGH<span>!</span></a>
+    <nav aria-label="Pie de página">
+      <a href="#inicio">Inicio</a><a href="#menu">Menú</a><a href="#masa">Nuestra masa</a>
+    </nav>
+    <small>Tienda de demostración. Los pedidos no son reales.</small>
+  </div>
+</footer>
+
+<div class="bar" id="bar" aria-live="polite">
+  <span><b id="barCount">0</b> en el carrito · <b id="barTotal"></b></span>
+  <button type="button" class="btn btn-red" id="barOpen">Ver carrito</button>
+</div>
+
+<div class="scrim" id="scrim" hidden></div>
+
+<aside class="drawer" id="cart" role="dialog" aria-modal="true" aria-labelledby="cartH" hidden>
+  <div class="dh"><h2 id="cartH">Tu carrito</h2><button type="button" class="x" data-close aria-label="Cerrar carrito"><svg width="20" height="20" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div class="db" id="cartLines"></div>
+  <div class="df" id="cartFoot"></div>
+</aside>
+
+<aside class="drawer" id="checkout" role="dialog" aria-modal="true" aria-labelledby="coH" hidden>
+  <div class="dh"><h2 id="coH">Pedido de prueba</h2><button type="button" class="x" data-close aria-label="Cerrar pedido"><svg width="20" height="20" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div class="db" id="coBody">
+    <form id="coForm" novalidate class="co-fields">
+      <fieldset>
+        <legend>¿Cómo la quieres?</legend>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="mode" value="pickup" checked><span>Paso a buscarla<small>Sin costo</small></span></label>
+          <label class="opt"><input type="radio" name="mode" value="delivery"><span>A domicilio<small id="feeLabel"></small></span></label>
+        </div>
+      </fieldset>
+      <div class="field"><label for="coName">Nombre</label><input id="coName" name="name" autocomplete="name"><span class="err" hidden>Escribe tu nombre.</span></div>
+      <div class="field"><label for="coPhone">Teléfono</label><input id="coPhone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="809-000-0000"><span class="err" hidden>Escribe un teléfono de 10 dígitos.</span></div>
+      <div class="field" id="addrField" hidden><label for="coAddr">Dirección</label><textarea id="coAddr" name="addr" autocomplete="street-address"></textarea><span class="err" hidden>Escribe la dirección de entrega.</span></div>
+      <div id="coSums"></div>
+      <p class="note">Esto es una demostración: no se cobra nada, no pedimos tarjeta y ningún restaurante recibe el pedido.</p>
+      <button type="submit" class="btn btn-red">Hacer pedido de prueba</button>
+    </form>
+    <div class="done" tabindex="-1" id="coDone" hidden></div>
+  </div>
+</aside>
+
+<div class="modal" id="custom" role="dialog" aria-modal="true" aria-labelledby="cuH" hidden>
+  <form class="card" id="cuForm">
+    <div class="card-img"><img id="cuImg" src="" alt="" width="280" height="280"></div>
+    <div class="card-body">
+      <button type="button" class="x" data-close aria-label="Cerrar"><svg width="20" height="20" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      <h2 id="cuH"></h2>
+      <p id="cuDesc"></p>
+      <fieldset><legend>Tamaño</legend><div class="opts" id="cuSizes"></div></fieldset>
+      <fieldset><legend>Extras</legend><div class="opts" id="cuExtras"></div></fieldset>
+      <div class="card-foot">
+        <div class="qty" aria-label="Cantidad"><button type="button" id="cuMinus" aria-label="Quitar una">−</button><output id="cuQty" aria-live="polite">1</output><button type="button" id="cuPlus" aria-label="Añadir una">+</button></div>
+        <button type="submit" class="btn btn-red" id="cuAdd">Agregar</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+/* ---------- one editable config ---------- */
+const CONFIG = {
+  brand: 'DOUGH!',
+  currency: { code: 'DOP', symbol: 'RD$', locale: 'es-DO' },
+  deliveryFee: 15000,                 // cents
+  sizes: [
+    { id: 'p', label: 'Personal', note: '10"', delta: -15000 },
+    { id: 'm', label: 'Mediana',  note: '12"', delta: 0 },
+    { id: 'g', label: 'Grande',   note: '16"', delta: 22000 }
+  ],
+  extras: [
+    { id: 'queso',   label: 'Queso extra',   price: 6000 },
+    { id: 'aji',     label: 'Ají picante',   price: 3000 },
+    { id: 'miel',    label: 'Miel picante',  price: 5000 },
+    { id: 'albahaca',label: 'Albahaca fresca', price: 2500 }
+  ],
+  categories: [ ['all','Todas'], ['classic','Clásicas'], ['spicy','Picantes'], ['veggie','Vegetarianas'] ],
+  products: [
+    { id: 'original', name: 'La Original',        desc: 'Tomate, mozzarella y albahaca.',               price: 49500, cats: ['classic','veggie'], img: 'img/original.webp' },
+    { id: 'palante',  name: "Echa Pa'lante",       desc: 'Pepperoni, mozzarella y tomate.',              price: 54500, cats: ['classic'],          img: 'img/pepperoni.webp' },
+    { id: 'picante',  name: 'Situación Picante',   desc: 'Pepperoni, ají picante y miel picante.',       price: 62500, cats: ['spicy'],            img: 'img/picante.webp', tag: 'Pica' },
+    { id: 'hongo',    name: 'Modo Hongo',          desc: 'Hongos, mozzarella y ajo.',                    price: 57500, cats: ['veggie'],           img: 'img/hongos.webp' },
+    { id: 'verde',    name: 'Bandera Verde',       desc: 'Vegetales de temporada, albahaca y tomate.',   price: 52500, cats: ['veggie'],           img: 'img/verde.webp' },
+    { id: 'todo',     name: 'Con Todo',            desc: 'La combinación cargada de la casa.',           price: 69500, cats: ['classic','spicy'],  img: 'img/contodo.webp', tag: 'La más llena' }
+  ]
+};
+const money = c => CONFIG.currency.symbol + (c / 100).toLocaleString(CONFIG.currency.locale, { minimumFractionDigits: 0, maximumFractionDigits: 2 });
+const byId = Object.fromEntries(CONFIG.products.map(p => [p.id, p]));
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]));
+
+/* ---------- character: scroll scrubs the frames of the animation (hard cuts, no blending) ---------- */
+const FRAMES = 97, framePath = i => `seq/${String(i).padStart(3, '0')}.webp`;
+const el = { stage: $('stage'), canvas: $('scene') };
+const ctx2d = el.canvas.getContext('2d');
+const imgs = new Array(FRAMES);
+let want = 0, shown = -1;
+function draw(i) {
+  // nearest frame that has finished loading
+  for (let d = 0; d < FRAMES; d++) {
+    for (const j of [i - d, i + d]) {
+      const im = imgs[j];
+      if (j >= 0 && j < FRAMES && im && im.complete && im.naturalWidth) {
+        if (j !== shown) { ctx2d.clearRect(0, 0, 760, 760); ctx2d.drawImage(im, 0, 0, 760, 760); shown = j; el.stage.classList.add('live'); }
+        return;
+      }
+    }
+  }
+}
+function preload() {
+  // coarse pass first so any scroll position has a close frame, then fill in
+  const order = [];
+  for (const step of [16, 8, 4, 2, 1]) for (let i = 0; i < FRAMES; i += step) if (!order.includes(i)) order.push(i);
+  if (!order.includes(FRAMES - 1)) order.splice(1, 0, FRAMES - 1);
+  let k = 0;
+  const next = () => {
+    if (k >= order.length) return;
+    const i = order[k++], im = new Image();
+    im.decoding = 'async';
+    im.onload = () => { if (Math.abs(i - want) < Math.abs(shown - want) || shown < 0) draw(want); next(); };
+    im.onerror = next;
+    im.src = framePath(i); imgs[i] = im;
+  };
+  for (let n = 0; n < 4; n++) next();
+}
+function render(p) {
+  p = Math.max(0, Math.min(1, p));
+  want = Math.round(p * (FRAMES - 1));
+  draw(want);
+  if (desktopPinned) {
+    const t = Math.max(0, Math.min(1, (p - .82) / .18)), h = t * t * (3 - 2 * t);
+    el.stage.style.transform = `translateY(${(-h * 4).toFixed(2)}%) scale(${(1 - h * .12).toFixed(3)})`;
+  } else el.stage.style.transform = '';
+}
+
+/* ---------- motion setup ---------- */
+let desktopPinned = false;
+const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+const STATIC_POSE = 0;
+function setupMotion() {
+  if (!reduce.matches) preload(); else { imgs[0] = new Image(); imgs[0].onload = () => draw(0); imgs[0].src = framePath(0); }
+  if (reduce.matches || !window.gsap || !window.ScrollTrigger) { render(STATIC_POSE); document.body.classList.add('static-hero'); return; }
+  gsap.registerPlugin(ScrollTrigger);
+  const state = { p: 0 };
+  const mm = gsap.matchMedia();
+  mm.add({ desk: '(min-width: 901px) and (min-height: 640px)', compact: '(max-width: 900px), (max-height: 639px)' }, ctx => {
+    const desk = ctx.conditions.desk;
+    desktopPinned = !!desk;
+    state.p = 0; render(0);
+    const tl = gsap.timeline({
+      defaults: { ease: 'none' },
+      scrollTrigger: desk
+        ? { trigger: '#inicio', start: 'top top+=72', end: '+=160%', pin: true, scrub: 0.6, anticipatePin: 1, invalidateOnRefresh: true }
+        : { trigger: '#scene', start: 'top 75%', end: 'bottom 15%', scrub: 0.4, invalidateOnRefresh: true }
+    });
+    tl.to(state, { p: 1, duration: 1, onUpdate: () => render(state.p) });
+    return () => { desktopPinned = false; el.stage.style.transform = ''; };
+  });
+  const refresh = () => ScrollTrigger.refresh();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(refresh);
+  window.addEventListener('load', refresh);
+}
+reduce.addEventListener ? reduce.addEventListener('change', () => location.reload()) : null;
+// pause idle loops when the hero is off screen
+if ('IntersectionObserver' in window) {
+  new IntersectionObserver(es => es.forEach(e => $('inicio').classList.toggle('paused', !e.isIntersecting)), { threshold: 0 }).observe($('scene'));
+}
+render(0);
+setupMotion();
+// header rule after scrolling
+addEventListener('scroll', () => document.querySelector('.head').classList.toggle('scrolled', scrollY > 8), { passive: true });
+
+/* ---------- menu ---------- */
+let filter = 'all';
+function renderFilters() {
+  $('filters').innerHTML = CONFIG.categories.map(([id, label]) =>
+    `<button type="button" class="filter" data-filter="${id}" aria-pressed="${filter === id}">${label}</button>`).join('');
+}
+function renderMenu() {
+  const list = CONFIG.products.filter(p => filter === 'all' || p.cats.includes(filter));
+  $('grid').innerHTML = list.length ? list.map(p => `
+    <article class="pz">
+      <div class="pz-img">${p.tag ? `<span class="pz-tag">${esc(p.tag)}</span>` : ''}<img src="${p.img}" alt="Pizza ${esc(p.name)} vista desde arriba" width="560" height="560" loading="lazy"></div>
+      <h3>${esc(p.name)}</h3>
+      <p>${esc(p.desc)}</p>
+      <div class="pz-foot">
+        <span class="price">${money(p.price)}</span>
+        <div class="pz-actions">
+          <button type="button" class="mini" data-custom="${p.id}">Personalizar</button>
+          <button type="button" class="mini red" data-add="${p.id}" aria-label="Agregar ${esc(p.name)} mediana al carrito">Agregar</button>
+        </div>
+      </div>
+    </article>`).join('') : '<p class="empty-filter">No hay pizzas en esta categoría.</p>';
+}
+$('filters').addEventListener('click', e => { const b = e.target.closest('[data-filter]'); if (!b) return; filter = b.dataset.filter; renderFilters(); renderMenu(); });
+$('grid').addEventListener('click', e => {
+  const c = e.target.closest('[data-custom]'), a = e.target.closest('[data-add]');
+  if (c) openCustom(c.dataset.custom, c);
+  if (a) { addToCart(a.dataset.add, 'm', [], 1); toastCart(a); }
+});
+
+/* ---------- cart state (cents, persisted, validated) ---------- */
+const KEY = 'dough-cart-v1';
+let cart = [];
+function loadCart() {
+  try {
+    const raw = JSON.parse(localStorage.getItem(KEY) || '[]');
+    if (!Array.isArray(raw)) return [];
+    return raw.filter(l => l && byId[l.pid] && CONFIG.sizes.some(s => s.id === l.size) && Array.isArray(l.extras)
+      && l.extras.every(x => CONFIG.extras.some(e => e.id === x)) && Number.isInteger(l.qty) && l.qty > 0 && l.qty < 100);
+  } catch (e) { return []; }
+}
+function saveCart() { try { localStorage.setItem(KEY, JSON.stringify(cart)); } catch (e) {} }
+const keyOf = (pid, size, extras) => `${pid}|${size}|${[...extras].sort().join(',')}`;
+function unitPrice(pid, size, extras) {
+  const s = CONFIG.sizes.find(z => z.id === size);
+  return byId[pid].price + (s ? s.delta : 0) + extras.reduce((t, x) => t + (CONFIG.extras.find(e => e.id === x)?.price || 0), 0);
+}
+function addToCart(pid, size, extras, qty) {
+  const k = keyOf(pid, size, extras);
+  const line = cart.find(l => keyOf(l.pid, l.size, l.extras) === k);
+  if (line) line.qty = Math.min(99, line.qty + qty); else cart.push({ pid, size, extras: [...extras].sort(), qty });
+  saveCart(); renderCart();
+}
+const count = () => cart.reduce((n, l) => n + l.qty, 0);
+const subtotal = () => cart.reduce((t, l) => t + unitPrice(l.pid, l.size, l.extras) * l.qty, 0);
+function renderCart() {
+  const n = count();
+  $('cartCount').textContent = n;
+  $('cartBtn').setAttribute('aria-label', `Abrir carrito, ${n} ${n === 1 ? 'pizza' : 'pizzas'}`);
+  $('barCount').textContent = n; $('barTotal').textContent = money(subtotal());
+  document.body.classList.toggle('has-bar', n > 0);
+  if (!cart.length) {
+    $('cartLines').innerHTML = `<div class="empty"><p>El carrito está vacío.</p><small>Ni un pedacito. Eso se arregla rápido.</small><a class="btn btn-red" href="#menu" data-close>Ver el menú</a></div>`;
+    $('cartFoot').innerHTML = ''; $('cartFoot').hidden = true; return;
+  }
+  $('cartFoot').hidden = false;
+  $('cartLines').innerHTML = cart.map((l, i) => {
+    const p = byId[l.pid], s = CONFIG.sizes.find(z => z.id === l.size);
+    const ex = l.extras.map(x => CONFIG.extras.find(e => e.id === x).label).join(', ');
+    return `<div class="line">
+      <img src="${p.img}" alt="" width="72" height="72">
+      <div>
+        <h3>${esc(p.name)}</h3>
+        <div class="meta">${s.label} ${s.note}${ex ? ' · ' + esc(ex) : ''} · ${money(unitPrice(l.pid, l.size, l.extras))} c/u</div>
+        <div class="line-ctl">
+          <div class="qty"><button type="button" data-dec="${i}" aria-label="Quitar una ${esc(p.name)}">−</button><output>${l.qty}</output><button type="button" data-inc="${i}" aria-label="Añadir una ${esc(p.name)}">+</button></div>
+          <b class="price" style="font-size:20px">${money(unitPrice(l.pid, l.size, l.extras) * l.qty)}</b>
+        </div>
+        <button type="button" class="rm" data-rm="${i}">Quitar</button>
+      </div></div>`;
+  }).join('');
+  $('cartFoot').innerHTML = `<div class="row"><span>Subtotal</span><span>${money(subtotal())}</span></div>
+    <div class="row total"><span>Total</span><span>${money(subtotal())}</span></div>
+    <button type="button" class="btn btn-red" id="toCheckout">Ir al pedido</button>`;
+}
+$('cartLines').addEventListener('click', e => {
+  const inc = e.target.closest('[data-inc]'), dec = e.target.closest('[data-dec]'), rm = e.target.closest('[data-rm]');
+  if (inc) cart[+inc.dataset.inc].qty = Math.min(99, cart[+inc.dataset.inc].qty + 1);
+  else if (dec) { const l = cart[+dec.dataset.dec]; l.qty -= 1; if (l.qty < 1) cart.splice(+dec.dataset.dec, 1); }
+  else if (rm) cart.splice(+rm.dataset.rm, 1);
+  else return;
+  saveCart(); renderCart();
+  const f = $('cartLines').querySelector('button') || $('cart').querySelector('.x'); if (f) f.focus();
+});
+$('cartFoot').addEventListener('click', e => { if (e.target.closest('#toCheckout')) { closeLayer(true); openCheckout($('cartBtn')); } });
+
+/* ---------- accessible layers (drawers + modal) ---------- */
+let openId = null, returnFocus = null;
+function openLayer(id, from) {
+  if (openId) closeLayer(true);
+  openId = id; returnFocus = from || document.activeElement;
+  $('scrim').hidden = false; $(id).hidden = false; document.body.style.overflow = 'hidden';
+  const f = $(id).querySelector('h2, button, input');
+  const first = $(id).querySelector('input:not([type=hidden]), button:not(.x), a[href]') || $(id).querySelector('.x');
+  (first || f).focus();
+}
+function closeLayer(silent) {
+  if (!openId) return;
+  $(openId).hidden = true; $('scrim').hidden = true; document.body.style.overflow = '';
+  openId = null;
+  if (!silent && returnFocus && document.contains(returnFocus)) returnFocus.focus();
+}
+$('scrim').addEventListener('click', () => closeLayer());
+document.addEventListener('click', e => { const c = e.target.closest('[data-close]'); if (c && openId && $(openId).contains(c)) closeLayer(); });
+document.addEventListener('keydown', e => {
+  if (!openId) return;
+  if (e.key === 'Escape') { e.preventDefault(); closeLayer(); return; }
+  if (e.key === 'Tab') {
+    const f = [...$(openId).querySelectorAll('button, a[href], input, textarea, [tabindex]:not([tabindex="-1"])')].filter(n => !n.disabled && n.offsetParent !== null);
+    if (!f.length) return;
+    const first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  }
+});
+$('cartBtn').addEventListener('click', e => { renderCart(); openLayer('cart', e.currentTarget); });
+$('barOpen').addEventListener('click', e => { renderCart(); openLayer('cart', e.currentTarget); });
+function toastCart(btn) { const t = btn.textContent; btn.textContent = '¡Listo!'; setTimeout(() => { btn.textContent = t; }, 1100); }
+
+/* ---------- customize modal ---------- */
+let cu = null;
+function openCustom(pid, from) {
+  const p = byId[pid];
+  cu = { pid, size: 'm', extras: new Set(), qty: 1 };
+  $('cuImg').src = p.img; $('cuImg').alt = `Pizza ${p.name}`;
+  $('cuH').textContent = p.name; $('cuDesc').textContent = p.desc;
+  $('cuSizes').innerHTML = CONFIG.sizes.map(s => `<label class="opt"><input type="radio" name="size" value="${s.id}" ${s.id === 'm' ? 'checked' : ''}><span>${s.label} ${s.note}<small>${money(p.price + s.delta)}</small></span></label>`).join('');
+  $('cuExtras').innerHTML = CONFIG.extras.map(x => `<label class="opt"><input type="checkbox" name="extra" value="${x.id}"><span>${x.label}<small>+${money(x.price)}</small></span></label>`).join('');
+  updateCustom();
+  openLayer('custom', from);
+}
+function updateCustom() {
+  $('cuQty').textContent = cu.qty;
+  $('cuAdd').textContent = `Agregar · ${money(unitPrice(cu.pid, cu.size, [...cu.extras]) * cu.qty)}`;
+  $('cuMinus').disabled = cu.qty <= 1;
+}
+$('cuForm').addEventListener('change', e => {
+  if (e.target.name === 'size') cu.size = e.target.value;
+  if (e.target.name === 'extra') e.target.checked ? cu.extras.add(e.target.value) : cu.extras.delete(e.target.value);
+  updateCustom();
+});
+$('cuMinus').addEventListener('click', () => { cu.qty = Math.max(1, cu.qty - 1); updateCustom(); });
+$('cuPlus').addEventListener('click', () => { cu.qty = Math.min(20, cu.qty + 1); updateCustom(); });
+$('cuForm').addEventListener('submit', e => {
+  e.preventDefault();
+  addToCart(cu.pid, cu.size, [...cu.extras], cu.qty);
+  closeLayer(true); renderCart(); openLayer('cart', returnFocus);
+});
+
+/* ---------- demo checkout (nothing personal is stored) ---------- */
+$('feeLabel').textContent = '+' + money(CONFIG.deliveryFee);
+function mode() { return $('coForm').querySelector('input[name=mode]:checked').value; }
+function openCheckout(from) {
+  const f = $('coForm');
+  f.hidden = false; $('coDone').hidden = true; $('coDone').innerHTML = '';
+  f.querySelectorAll('.field').forEach(x => { x.classList.remove('bad'); x.querySelector('.err').hidden = true; });
+  f.querySelectorAll('[aria-invalid]').forEach(x => x.removeAttribute('aria-invalid'));
+  renderCheckout(); openLayer('checkout', from);
+}
+function renderCheckout() {
+  const del = mode() === 'delivery';
+  $('addrField').hidden = !del;
+  const fee = del ? CONFIG.deliveryFee : 0;
+  $('coSums').innerHTML = `<div class="row"><span>Subtotal (${count()})</span><span>${money(subtotal())}</span></div>
+    ${del ? `<div class="row"><span>Entrega</span><span>${money(fee)}</span></div>` : ''}
+    <div class="row total"><span>Total</span><span>${money(subtotal() + fee)}</span></div>`;
+}
+$('coForm').addEventListener('change', renderCheckout);
+function check(id, ok) { const f = $(id).closest('.field'); f.classList.toggle('bad', !ok); f.querySelector('.err').hidden = ok; $(id).setAttribute('aria-invalid', String(!ok)); return ok; }
+$('coForm').addEventListener('submit', e => {
+  e.preventDefault();
+  if (!cart.length) { closeLayer(); return; }
+  const okName = check('coName', $('coName').value.trim().length >= 2);
+  const okPhone = check('coPhone', $('coPhone').value.replace(/\D/g, '').length === 10);
+  const okAddr = mode() !== 'delivery' || check('coAddr', $('coAddr').value.trim().length >= 6);
+  if (!(okName && okPhone && okAddr)) { $('coForm').querySelector('.bad input, .bad textarea').focus(); return; }
+  const n = count(), total = subtotal() + (mode() === 'delivery' ? CONFIG.deliveryFee : 0);
+  const name = $('coName').value.trim().split(' ')[0];
+  cart = []; saveCart(); renderCart();
+  $('coForm').hidden = true; $('coDone').hidden = false;
+  $('coDone').innerHTML = `
+    <h3>¡Eso, ${esc(name)}! Pedido de prueba listo.</h3>
+    <p>${n} ${n === 1 ? 'pizza' : 'pizzas'} por ${money(total)}.</p>
+    <p class="note">No se envió ningún pedido real: esta tienda es una demostración, no se cobró nada y ningún restaurante lo recibió.</p>
+    <button type="button" class="btn btn-ink" data-close>Volver a la tienda</button>`;
+  $('coForm').reset();
+  $('coDone').focus();
+});
+
+/* ---------- boot ---------- */
+cart = loadCart();
+renderFilters(); renderMenu(); renderCart();
+</script>
+</body>
+</html>
