@@ -20,6 +20,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,900&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap">
+<link rel="stylesheet" href="https://piezza.sandscap.com.do/brinco/v1/kit.css">
+<script src="https://piezza.sandscap.com.do/brinco/v1/kit.js" defer></script>
 <style>
 /* Layout: editorial split hero (oversized type left, line-art character right) pinned while scroll plays one story; then menu, our dough, red closing band. Single warm-paper look by design. */
 :root{
@@ -145,13 +147,12 @@ html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 82px)}
 .foot nav a{text-decoration:none;font-weight:500;padding:10px 12px;min-height:44px;display:inline-flex;align-items:center}
 .foot nav a:hover{color:var(--tomato)}
 .foot small{color:var(--muted);font-size:14px}
-.fvault{flex:1 1 100%;display:flex;align-items:flex-start;gap:8px;margin:0;max-width:620px;font-size:14px;line-height:1.55;color:var(--muted)}
-.fvault svg{flex:none;margin-top:3px;color:var(--tomato)}
+.fvault{flex:1 1 100%;margin:0;max-width:620px;font-size:14px;line-height:1.55;color:var(--muted)}
 .fvault b{color:var(--ink);font-weight:700}
 
 /* overlays */
-.scrim{position:fixed;inset:0;background:rgba(36,36,36,.5);z-index:80}
-.drawer{position:fixed;top:0;right:0;bottom:0;width:min(460px,100%);background:var(--paper);z-index:90;display:flex;flex-direction:column;border-left:3px solid var(--ink);animation:slide .3s cubic-bezier(.2,.7,.2,1)}
+.scrim{position:fixed;inset:0;background:rgba(36,36,36,.5);z-index:100}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(460px,100%);background:var(--paper);z-index:110;display:flex;flex-direction:column;border-left:3px solid var(--ink);animation:slide .3s cubic-bezier(.2,.7,.2,1)}
 @keyframes slide{from{transform:translateX(100%)}to{transform:none}}
 .dh{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;padding-top:calc(18px + env(safe-area-inset-top,0px));border-bottom:2px solid var(--ink)}
 .dh h2{font-family:var(--display);font-weight:900;font-size:30px;letter-spacing:-.02em}
@@ -176,7 +177,7 @@ html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 82px)}
 .empty p{margin:0;font-family:var(--display);font-weight:700;font-size:22px}
 .empty small{color:var(--muted);font-size:15px}
 
-.modal{position:fixed;inset:0;z-index:95;display:grid;place-items:center;padding:16px;pointer-events:none}
+.modal{position:fixed;inset:0;z-index:112;display:grid;place-items:center;padding:16px;pointer-events:none}
 .card{pointer-events:auto;background:var(--paper);border:3px solid var(--ink);border-radius:24px;box-shadow:8px 8px 0 var(--ink);width:min(720px,100%);max-height:calc(100vh - 32px);max-height:calc(100svh - 32px);overflow:auto;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);animation:pop .25s cubic-bezier(.2,.7,.2,1)}
 @keyframes pop{from{transform:translateY(16px)}to{transform:none}}
 .card-img{background:var(--paper-2);display:grid;place-items:center;padding:24px;border-right:3px solid var(--ink)}
@@ -196,22 +197,13 @@ legend{font-weight:700;margin-bottom:8px;padding:0}
 .opt input:focus-visible+span{outline:3px solid var(--tomato);outline-offset:2px}
 .card-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-top:14px;border-top:2px solid var(--ink)}
 
-.co-fields{display:flex;flex-direction:column;gap:14px}
-.field{display:flex;flex-direction:column;gap:6px}
-.field label{font-weight:700;font-size:15px}
-.field input,.field textarea{min-height:50px;border:2px solid var(--ink);border-radius:12px;background:#fff;padding:10px 14px;font:inherit;font-size:16px;color:var(--ink);width:100%}
-.field textarea{min-height:80px;resize:vertical}
-.field .err{color:var(--tomato-ink);font-size:14px;font-weight:500}
-.field.bad input,.field.bad textarea{border-color:var(--tomato-ink)}
-.note{font-size:14px;color:var(--muted);background:var(--paper-2);border-radius:12px;padding:12px 14px}
-.done{display:flex;flex-direction:column;gap:14px;padding:12px 0}
-.done h3{font-family:var(--display);font-weight:900;font-size:30px;line-height:1.05}
-
 .bar{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:60;display:none;align-items:center;justify-content:space-between;gap:12px;background:var(--ink);color:var(--paper);border-radius:999px;padding:8px 8px 8px 20px;box-shadow:0 10px 30px rgba(36,36,36,.3)}
 .bar b{font-variant-numeric:tabular-nums}
 .bar .btn{min-height:44px;padding:0 20px;font-size:15px;box-shadow:none;border-color:var(--tomato)}
 body.has-bar .bar{display:flex}
 body.has-bar{padding-bottom:84px}
+/* Brinco: the active-order pill sits above the mobile cart bar */
+@media (max-width:900px){body.has-bar .bk-pill{bottom:calc(80px + env(safe-area-inset-bottom,0px))}}
 
 /* responsive */
 @media (max-width:1100px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
@@ -261,6 +253,7 @@ body.has-bar{padding-bottom:84px}
     <nav class="nav" aria-label="Principal">
       <a href="#menu" class="hide-sm">Menú</a>
       <a href="#masa" class="hide-sm">Nuestra masa</a>
+      <a href="/pedido/" class="hide-sm" data-brinco="mis-pedidos">Mis pedidos</a>
       <button type="button" class="cart-btn" id="cartBtn" aria-haspopup="dialog" aria-controls="cart">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h2l2.3 10.4a1.6 1.6 0 0 0 1.6 1.2h8.4a1.6 1.6 0 0 0 1.6-1.2L21 8H6.2"/><circle cx="9.5" cy="20" r="1.4"/><circle cx="17.5" cy="20" r="1.4"/></svg>
         <span class="cart-label">Carrito</span>
@@ -326,10 +319,13 @@ body.has-bar{padding-bottom:84px}
   <div class="wrap">
     <a href="#inicio" class="wordmark">DOUGH<span>!</span></a>
     <nav aria-label="Pie de página">
-      <a href="#inicio">Inicio</a><a href="#menu">Menú</a><a href="#masa">Nuestra masa</a>
+      <a href="#inicio">Inicio</a><a href="#menu">Menú</a><a href="#masa">Nuestra masa</a><a href="/pedido/" data-brinco="mis-pedidos">Mis pedidos</a>
+    </nav>
+    <nav aria-label="Legal" class="foot-legal">
+      <a href="/seguridad/">Políticas de seguridad</a><a href="/privacidad/">Privacidad</a><a href="/terminos/">Términos y entregas</a>
     </nav>
     <small>Tienda de demostración. Los pedidos no son reales.</small>
-    <p class="fvault"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.6-3 8.4-7 10-4-1.6-7-5.4-7-10V6z"/><rect x="9" y="11" width="6" height="5" rx="1"/><path d="M10.5 11V9.6a1.5 1.5 0 0 1 3 0V11"/></svg><span><b>Brinco no guarda tarjetas.</b> Tus datos de pago quedan protegidos por el procesador certificado PCI DSS: <b>AZUL</b>, <b>CardNet</b> o <b>MIO</b>.</span></p>
+    <p class="fvault" data-brinco="vault-footer"></p>
   </div>
 </footer>
 
@@ -344,28 +340,6 @@ body.has-bar{padding-bottom:84px}
   <div class="dh"><h2 id="cartH">Tu carrito</h2><button type="button" class="x" data-close aria-label="Cerrar carrito"><svg width="20" height="20" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
   <div class="db" id="cartLines"></div>
   <div class="df" id="cartFoot"></div>
-</aside>
-
-<aside class="drawer" id="checkout" role="dialog" aria-modal="true" aria-labelledby="coH" hidden>
-  <div class="dh"><h2 id="coH">Pedido de prueba</h2><button type="button" class="x" data-close aria-label="Cerrar pedido"><svg width="20" height="20" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
-  <div class="db" id="coBody">
-    <form id="coForm" novalidate class="co-fields">
-      <fieldset>
-        <legend>¿Cómo la quieres?</legend>
-        <div class="opts">
-          <label class="opt"><input type="radio" name="mode" value="pickup" checked><span>Paso a buscarla<small>Sin costo</small></span></label>
-          <label class="opt"><input type="radio" name="mode" value="delivery"><span>A domicilio<small id="feeLabel"></small></span></label>
-        </div>
-      </fieldset>
-      <div class="field"><label for="coName">Nombre</label><input id="coName" name="name" autocomplete="name"><span class="err" hidden>Escribe tu nombre.</span></div>
-      <div class="field"><label for="coPhone">Teléfono</label><input id="coPhone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="809-000-0000"><span class="err" hidden>Escribe un teléfono de 10 dígitos.</span></div>
-      <div class="field" id="addrField" hidden><label for="coAddr">Dirección</label><textarea id="coAddr" name="addr" autocomplete="street-address"></textarea><span class="err" hidden>Escribe la dirección de entrega.</span></div>
-      <div id="coSums"></div>
-      <p class="note">Esto es una demostración: no se cobra nada, no pedimos tarjeta y ningún restaurante recibe el pedido.</p>
-      <button type="submit" class="btn btn-red">Hacer pedido de prueba</button>
-    </form>
-    <div class="done" tabindex="-1" id="coDone" hidden></div>
-  </div>
 </aside>
 
 <div class="modal" id="custom" role="dialog" aria-modal="true" aria-labelledby="cuH" hidden>
@@ -392,7 +366,6 @@ body.has-bar{padding-bottom:84px}
 const CONFIG = {
   brand: 'DOUGH!',
   currency: { code: 'DOP', symbol: 'RD$', locale: 'es-DO' },
-  deliveryFee: 15000,                 // cents
   sizes: [
     { id: 'p', label: 'Personal', note: '10"', delta: -15000 },
     { id: 'm', label: 'Mediana',  note: '12"', delta: 0 },
@@ -551,6 +524,7 @@ function addToCart(pid, size, extras, qty) {
   const line = cart.find(l => keyOf(l.pid, l.size, l.extras) === k);
   if (line) line.qty = Math.min(99, line.qty + qty); else cart.push({ pid, size, extras: [...extras].sort(), qty });
   saveCart(); renderCart(); cartFeedback(byId[pid].name);
+  try { if (window.Brinco && Brinco.track) Brinco.track('carrito', { producto: byId[pid].name, total: subtotal() / 100 }); } catch (e) {}
 }
 // visible confirmation right under the cart button (the header stays on screen)
 let pillT;
@@ -590,7 +564,7 @@ function renderCart() {
   }).join('');
   $('cartFoot').innerHTML = `<div class="row"><span>Subtotal</span><span>${money(subtotal())}</span></div>
     <div class="row total"><span>Total</span><span>${money(subtotal())}</span></div>
-    <button type="button" class="btn btn-red" id="toCheckout">Ir al pedido</button>`;
+    <button type="button" class="btn btn-red" id="toCheckout">Finalizar pedido</button>`;
 }
 $('cartLines').addEventListener('click', e => {
   const inc = e.target.closest('[data-inc]'), dec = e.target.closest('[data-dec]'), rm = e.target.closest('[data-rm]');
@@ -601,7 +575,10 @@ $('cartLines').addEventListener('click', e => {
   saveCart(); renderCart();
   const f = $('cartLines').querySelector('button') || $('cart').querySelector('.x'); if (f) f.focus();
 });
-$('cartFoot').addEventListener('click', e => { if (e.target.closest('#toCheckout')) { closeLayer(true); openCheckout($('cartBtn')); } });
+$('cartFoot').addEventListener('click', e => {
+  if (!e.target.closest('#toCheckout') || !cart.length) return;
+  if (window.Brinco && Brinco.checkout) Brinco.checkout();
+});
 
 /* ---------- accessible layers (drawers + modal) ---------- */
 let openId = null, returnFocus = null;
@@ -666,45 +643,19 @@ $('cuForm').addEventListener('submit', e => {
   closeLayer(true); renderCart(); openLayer('cart', returnFocus);
 });
 
-/* ---------- demo checkout (nothing personal is stored) ---------- */
-$('feeLabel').textContent = '+' + money(CONFIG.deliveryFee);
-function mode() { return $('coForm').querySelector('input[name=mode]:checked').value; }
-function openCheckout(from) {
-  const f = $('coForm');
-  f.hidden = false; $('coDone').hidden = true; $('coDone').innerHTML = '';
-  f.querySelectorAll('.field').forEach(x => { x.classList.remove('bad'); x.querySelector('.err').hidden = true; });
-  f.querySelectorAll('[aria-invalid]').forEach(x => x.removeAttribute('aria-invalid'));
-  renderCheckout(); openLayer('checkout', from);
-}
-function renderCheckout() {
-  const del = mode() === 'delivery';
-  $('addrField').hidden = !del;
-  const fee = del ? CONFIG.deliveryFee : 0;
-  $('coSums').innerHTML = `<div class="row"><span>Subtotal (${count()})</span><span>${money(subtotal())}</span></div>
-    ${del ? `<div class="row"><span>Entrega</span><span>${money(fee)}</span></div>` : ''}
-    <div class="row total"><span>Total</span><span>${money(subtotal() + fee)}</span></div>`;
-}
-$('coForm').addEventListener('change', renderCheckout);
-function check(id, ok) { const f = $(id).closest('.field'); f.classList.toggle('bad', !ok); f.querySelector('.err').hidden = ok; $(id).setAttribute('aria-invalid', String(!ok)); return ok; }
-$('coForm').addEventListener('submit', e => {
-  e.preventDefault();
-  if (!cart.length) { closeLayer(); return; }
-  const okName = check('coName', $('coName').value.trim().length >= 2);
-  const okPhone = check('coPhone', $('coPhone').value.replace(/\D/g, '').length === 10);
-  const okAddr = mode() !== 'delivery' || check('coAddr', $('coAddr').value.trim().length >= 6);
-  if (!(okName && okPhone && okAddr)) { $('coForm').querySelector('.bad input, .bad textarea').focus(); return; }
-  const n = count(), total = subtotal() + (mode() === 'delivery' ? CONFIG.deliveryFee : 0);
-  const name = $('coName').value.trim().split(' ')[0];
-  cart = []; saveCart(); renderCart();
-  $('coForm').hidden = true; $('coDone').hidden = false;
-  $('coDone').innerHTML = `
-    <h3>¡Eso, ${esc(name)}! Pedido de prueba listo.</h3>
-    <p>${n} ${n === 1 ? 'pizza' : 'pizzas'} por ${money(total)}.</p>
-    <p class="note">No se envió ningún pedido real: esta tienda es una demostración, no se cobró nada y ningún restaurante lo recibió.</p>
-    <button type="button" class="btn btn-ink" data-close>Volver a la tienda</button>`;
-  $('coForm').reset();
-  $('coDone').focus();
-});
+/* ---------- Brinco Kit adapter: the kit runs checkout, payment and tracking ---------- */
+window.BrincoCart = {
+  items() {
+    return cart.map(l => {
+      const p = byId[l.pid], s = CONFIG.sizes.find(z => z.id === l.size);
+      const ex = l.extras.map(x => CONFIG.extras.find(e => e.id === x).label).join(', ');
+      return { name: p.name, detail: `${s.label} ${s.note}${ex ? ' · ' + ex : ''}`, qty: l.qty, unit: unitPrice(l.pid, l.size, l.extras) / 100, img: '/' + p.img };
+    });
+  },
+  total() { return subtotal() / 100; },
+  clear() { cart = []; saveCart(); renderCart(); },
+  close() { if (openId) closeLayer(true); }
+};
 
 /* ---------- boot ---------- */
 cart = loadCart();

@@ -1,0 +1,29 @@
+{
+  "negocio": "dough",
+  "nombre": "DOUGH!",
+  "nombreLegal": "DOUGH! Pizzería",
+  "dominio": "dough.sandscap.com.do",
+  "logo": "/img/dough-logo.png",
+  "logoBlanco": "/img/dough-logo-white.png",
+  "favicon": "/img/favicon.png",
+  "color": "#E33D2E",
+  "colorTexto": "#242424",
+  "colorFondo": "#F4F2F0",
+  "fuenteTitulos": "Fraunces",
+  "fuenteTexto": "DM Sans",
+  "googleFonts": "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,900&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap",
+  "prefijoOrden": "DG",
+  "moneda": "RD$",
+  "envio": 150,
+  "entrega": { "delivery": true, "pickup": true, "deliveryMin": 30, "deliveryMax": 45, "pickupMin": 20 },
+  "sectores": ["Piantini", "Naco", "Evaristo Morales", "Serrallés", "Bella Vista", "Los Cacicazgos", "Mirador Sur", "Paraíso", "Julieta Morales", "La Esperilla", "Gazcue", "Zona Colonial", "Arroyo Hondo", "Los Prados"],
+  "tienda": { "direccion": "Av. Sarasota 39, Bella Vista", "ciudad": "Santo Domingo", "mapa": "https://maps.google.com/?q=Av.+Sarasota+39,+Bella+Vista,+Santo+Domingo" },
+  "producto": { "singular": "pizza", "plural": "pizzas" },
+  "etapas": {
+    "preparando": "Estirando tu masa",
+    "coccion": "En el horno",
+    "coccionTexto": "Tu pizza se está dorando. Ya mismo sale el primer pedazo."
+  },
+  "contacto": { "direccion": "[Dirección del local]", "telefono": "[Teléfono / WhatsApp]", "correo": "[Correo]", "instagram": "[@usuario]" },
+  "idioma": "es"
+}
