@@ -55,7 +55,13 @@ button{font-family:inherit;color:inherit}
 
 /* header */
 .head{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:var(--paper);border-bottom:2px solid transparent;transition:border-color .2s}
-.head.scrolled{border-color:var(--ink)}
+.head.scrolled{border-color:var(--ink);box-shadow:0 8px 20px rgba(36,36,36,.08)}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 82px)}
+.nav{position:relative}
+.cart-pill{position:absolute;top:calc(100% + 22px);right:0;max-width:calc(100vw - 32px);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;background:var(--ink);color:var(--paper);font-size:14px;font-weight:700;line-height:1.2;padding:9px 14px;border-radius:999px;box-shadow:0 8px 20px rgba(36,36,36,.22);opacity:0;transform:translateY(-4px);transition:opacity .2s ease,transform .2s ease;pointer-events:none}
+.cart-pill.show{opacity:1;transform:none}
+.cart-count.bump{animation:bump .45s cubic-bezier(.3,1.6,.5,1)}
+@keyframes bump{0%{transform:scale(1)}40%{transform:scale(1.4)}100%{transform:scale(1)}}
 .head .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:72px}
 .wordmark{font-family:var(--display);font-weight:900;font-size:30px;letter-spacing:-.02em;text-decoration:none;line-height:1}
 .wordmark span{color:var(--tomato)}
@@ -238,7 +244,8 @@ body.has-bar{padding-bottom:84px}
   .card{border-radius:24px 24px 0 0;box-shadow:none;max-height:92svh;border-width:3px 0 0}
 }
 @media (prefers-reduced-motion:reduce){
-  .idle-breathe,.idle-blink,.cue i,.drawer,.card{animation:none!important}
+  .idle-breathe,.idle-blink,.cue i,.drawer,.card,.cart-count.bump{animation:none!important}
+  .cart-pill{transition:opacity .2s ease;transform:none}
   .pz-img img{transition:none}
 }
 </style>
@@ -256,6 +263,7 @@ body.has-bar{padding-bottom:84px}
         <span class="cart-label">Carrito</span>
         <span class="cart-count" id="cartCount">0</span>
       </button>
+      <span class="cart-pill" id="cartPill" role="status" aria-live="polite"></span>
     </nav>
   </div>
 </header>
@@ -538,7 +546,15 @@ function addToCart(pid, size, extras, qty) {
   const k = keyOf(pid, size, extras);
   const line = cart.find(l => keyOf(l.pid, l.size, l.extras) === k);
   if (line) line.qty = Math.min(99, line.qty + qty); else cart.push({ pid, size, extras: [...extras].sort(), qty });
-  saveCart(); renderCart();
+  saveCart(); renderCart(); cartFeedback(byId[pid].name);
+}
+// visible confirmation right under the cart button (the header stays on screen)
+let pillT;
+function cartFeedback(name) {
+  const c = $('cartCount'), pill = $('cartPill');
+  c.classList.remove('bump'); void c.offsetWidth; c.classList.add('bump');
+  pill.textContent = `✓ ${name} en tu carrito`; pill.classList.add('show');
+  clearTimeout(pillT); pillT = setTimeout(() => pill.classList.remove('show'), 2000);
 }
 const count = () => cart.reduce((n, l) => n + l.qty, 0);
 const subtotal = () => cart.reduce((t, l) => t + unitPrice(l.pid, l.size, l.extras) * l.qty, 0);
