@@ -25,5 +25,21 @@
     "coccionTexto": "Tu pizza se está dorando. Ya mismo sale el primer pedazo."
   },
   "contacto": { "direccion": "[Dirección del local]", "telefono": "[Teléfono / WhatsApp]", "correo": "[Correo]", "instagram": "[@usuario]" },
-  "idioma": "es"
+  "idioma": "es",
+  "catalogo": {
+    "productos": {
+      "original": { "p": 345, "m": 495, "g": 715 },
+      "palante": { "p": 395, "m": 545, "g": 765 },
+      "picante": { "p": 475, "m": 625, "g": 845 },
+      "hongo": { "p": 425, "m": 575, "g": 795 },
+      "verde": { "p": 375, "m": 525, "g": 745 },
+      "todo": { "p": 545, "m": 695, "g": 915 }
+    },
+    "extras": {
+      "queso": 60,
+      "aji": 30,
+      "miel": 50,
+      "albahaca": 25
+    }
+  }
 }

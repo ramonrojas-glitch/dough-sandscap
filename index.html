@@ -647,7 +647,8 @@ window.BrincoCart = {
     return cart.map(l => {
       const p = byId[l.pid], s = CONFIG.sizes.find(z => z.id === l.size);
       const ex = l.extras.map(x => CONFIG.extras.find(e => e.id === x).label).join(', ');
-      return { name: p.name, detail: `${s.label} ${s.note}${ex ? ' · ' + ex : ''}`, qty: l.qty, unit: unitPrice(l.pid, l.size, l.extras) / 100, img: '/' + p.img };
+      return { name: p.name, detail: `${s.label} ${s.note}${ex ? ' · ' + ex : ''}`, qty: l.qty, unit: unitPrice(l.pid, l.size, l.extras) / 100, img: '/' + p.img,
+        sku: { p: l.pid, v: l.size, x: l.extras.slice() } };
     });
   },
   total() { return subtotal() / 100; },
